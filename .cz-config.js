@@ -70,7 +70,7 @@ module.exports = {
   allowBreakingChanges: ['feat', 'fix'],
 
   // 跳过要询问的步骤
-  // skipQuestions: ['body', 'footer'],
+  skipQuestions: ['body', 'footer'],
 
   // subject 限制长度
   subjectLimit: 100,
