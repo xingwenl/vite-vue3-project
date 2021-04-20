@@ -1,0 +1,18 @@
+{
+  "editor.tabSize": 2,
+  "prettier.printWidth": 120,
+  "prettier.useTabs": true,
+  "editor.formatOnSave": true,
+  "eslint.alwaysShowStatus": true,
+  // 每次保存的时候将代码按eslint格式进行修
+  // "prettier.eslintIntegration": true,
+  //  #使用带引号替代双引号
+  "prettier.singleQuote": true,
+  //  #去掉代码结尾的分号
+  "prettier.semi": true,
+  //  #让函数(名)和后面的括号之间加个空格
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
+}
