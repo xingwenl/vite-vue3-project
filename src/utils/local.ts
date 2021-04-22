@@ -1,9 +1,14 @@
 interface ILocalData {
   expires: number;
   data: any;
+  version: string;
 }
 interface stringObj {
   [key: string]: any;
+}
+interface ICacheParmas {
+  cachetime?: number;
+  version?: string;
 }
 
 // 是否到期
@@ -42,13 +47,20 @@ class Local {
     return storage;
   }
 
-  get(key: string): any | null {
+  get(key: string, version?: string): any | null {
     let valString = localStorage.getItem(this.getKey(key));
     if (valString) {
       const val: ILocalData = jsonParse(valString);
       // 如果本来就是字符串 直接返回
       if (typeof val === 'string') return valString;
+
+      // 已过有效期
       if (isExpires(val.expires)) {
+        this.remove(key);
+        return null;
+      }
+      // 有版本号 ，但是版本号不一致，说明本地过期
+      if (version && version !== val.version) {
         this.remove(key);
         return null;
       }
@@ -58,15 +70,24 @@ class Local {
     return localStorage.getItem(key);
   }
 
-  set(key: string, val: string, cachetime?: number) {
+  /**
+   *
+   * @param {string} key
+   * @param {string} val
+   * @param {ICacheParmas} [cachetime] 相对时间，单位秒
+   * @returns
+   * @memberof Local
+   */
+  set(key: string, val: string, cache?: ICacheParmas) {
     const now = new Date().getTime();
-    const expires = cachetime ? new Date(now + cachetime * 1000).getTime() : 0;
+    const expires = cache?.cachetime ? new Date(now + cache.cachetime * 1000).getTime() : 0;
     try {
       localStorage.setItem(
         this.getKey(key),
         JSON.stringify({
           data: val,
           expires,
+          version: cache?.version,
         }),
       );
     } catch (error) {
@@ -75,7 +96,7 @@ class Local {
       } else {
         this.removeExpires();
       }
-      this.set(key, val, cachetime);
+      this.set(key, val, cache);
       console.error('存储失败');
     }
     return this;

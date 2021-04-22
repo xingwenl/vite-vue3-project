@@ -6,22 +6,23 @@ import { resolve } from 'path';
 export default defineConfig({
   plugins: [vue()],
   resolve: {
-    extensions: ['.ts', 'vue', '.json', '.css'],
+    extensions: ['.ts', '.js', 'vue', '.json', '.css'],
     alias: {
       '@': resolve(__dirname, 'src'),
     },
   },
-  base: './', // 设置打包路径
-  server: {
-    port: 4000, // 设置服务启动端口号
-    open: true, // 设置服务启动时是否自动打开浏览器
-    cors: true, // 允许跨域
-    // proxy: {
-    //   '/api': {
-    //     target: 'http://xxx.xxx',
-    //     changeOrigin: true,
-    //     rewrite: path => path.replace('/api', '/'),
-    //   }
-    // }
-  },
+  // // publicDir: 'node_modules/.vite',
+  // // base: './', // 设置打包路径
+  // server: {
+  //   port: 3001, // 设置服务启动端口号
+  //   open: true, // 设置服务启动时是否自动打开浏览器
+  //   cors: true, // 允许跨域
+  //   proxy: {
+  //     '/api': {
+  //       target: 'http://xxx.xxx',
+  //       changeOrigin: true,
+  //       rewrite: path => path.replace('/api', '/'),
+  //     },
+  //   },
+  // },
 });

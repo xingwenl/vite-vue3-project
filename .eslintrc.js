@@ -11,6 +11,7 @@ module.exports = {
     'plugin:prettier/recommended', // 添加 prettier 插件
     'plugin:jest/recommended',
   ],
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 12,
     parser: '@typescript-eslint/parser',
@@ -25,6 +26,16 @@ module.exports = {
     'import/no-absolute-path': 'off',
     'import/no-extraneous-dependencies': 'off',
     'vue/no-multiple-template-root': 'off',
+    'no-unused-vars': [
+      'error',
+      {
+        args: 'none',
+        vars: 'local',
+        ignoreRestSiblings: true,
+        argsIgnorePattern: '^_',
+      },
+    ],
+    'func-names': ['error', 'as-needed'],
     'prettier/prettier': [
       'error',
       {

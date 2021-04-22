@@ -1,0 +1,88 @@
+p {
+  margin: 0;
+  padding: 0;
+}
+div, p, input {
+  box-sizing: border-box;
+}
+
+.relative {
+  position: relative;
+}
+* {
+  box-sizing: border-box;
+  // touch-action: none;
+
+  -webkit-tap-highlight-color: transparent; //iOS 去掉点击小黑块
+
+  // iOS 去掉长按出现复制粘贴
+  // -webkit-touch-callout:none;  /*系统默认菜单被禁用*/
+  // -webkit-user-select:none; /*webkit浏览器*/
+  // -khtml-user-select:none; /*早期浏览器*/
+  // -moz-user-select:none;/*火狐*/
+  // -ms-user-select:none; /*IE10*/
+  user-select: none;
+}
+[text] {
+  user-select: text;
+}
+input, textarea {
+  // input 不禁止
+  user-select: auto;
+  // -webkit-user-select: auto; /*webkit浏览器*/
+}
+img {
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+dl,
+dd,
+p,
+form {
+  margin: 0;
+}
+
+ol,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+em,
+i {
+  font-style: normal;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+a {
+  text-decoration: none;
+  outline: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+img {
+  border: 0;
+  vertical-align: top;
+}
+
+input,
+select,
+button,
+textarea {
+  outline: 0;
+}
+
+input[type=submit],
+input[type=button] {
+  border: none;
+}
